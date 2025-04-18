@@ -21,7 +21,10 @@ router.get('/:id',CustomersController.getCutomerByID)
 router.put('/:id',
     validateRequest(CustomerValidationSchema.updateCustomerZodSchema),
     CustomersController.updateCustomer
-  );
+);
+
+// Delete customer
+router.delete('/:id',CustomersController.deleteCustomer)
 
 
 
