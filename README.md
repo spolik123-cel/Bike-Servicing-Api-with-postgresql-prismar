@@ -1,5 +1,3 @@
-Here's a **professional `README.md`** file for your Bike Servicing Management API project:
-
 
 # 🚴‍♂️ Bike Servicing Management API
 
