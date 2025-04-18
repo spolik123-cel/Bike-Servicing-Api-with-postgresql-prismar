@@ -37,11 +37,31 @@ const getAllCustomersFromDB = async() => {
 const getCustomerByIDFromDB = async(id:string) => {
 
   const customer = await prisma.customer.findUniqueOrThrow({
+
     where:{
+
       customerId:id
+
     },
+
   }
 );
+
+  return customer;
+}
+
+const updateCustomerInToDB = async (customerId: string, payload:Partial<ICustomer>) => {
+  
+  const customer = await prisma.customer.update({
+
+    where: { 
+      
+      customerId 
+    },
+
+    data: payload,
+
+  });
 
   return customer;
 }
@@ -49,5 +69,6 @@ const getCustomerByIDFromDB = async(id:string) => {
 export const CustomerService = {
     createCustomerInToDB,
     getAllCustomersFromDB,
-    getCustomerByIDFromDB
+    getCustomerByIDFromDB,
+    updateCustomerInToDB
 }

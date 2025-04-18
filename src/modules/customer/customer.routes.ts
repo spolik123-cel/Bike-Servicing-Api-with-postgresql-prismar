@@ -17,6 +17,12 @@ router.get('/', CustomersController.getAllCustomers);
 // Get a specific customer by ID
 router.get('/:id',CustomersController.getCutomerByID)
 
+// Update customer details
+router.put('/:id',
+    validateRequest(CustomerValidationSchema.updateCustomerZodSchema),
+    CustomersController.updateCustomer
+  );
+
 
 
 export const CoustomerRoutes = router

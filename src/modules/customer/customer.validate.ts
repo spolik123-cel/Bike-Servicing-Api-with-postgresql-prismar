@@ -10,7 +10,19 @@ const createCustomerSchema = z.object({
   }),
 });
 
+const updateCustomerZodSchema = z
+  .object({
+    body:z.object({
+      name: z.string().optional(),
+      email: z.string().email('Invalid email format').optional(),
+      phone: z.string().optional(),
+    })
+    .refine((data) => data.name || data.email || data.phone, {
+      message: 'At least one field (name, email, or phone) must be provided',
+    })
+  })
 
 export const CustomerValidationSchema = {
-    createCustomerSchema
+    createCustomerSchema,
+    updateCustomerZodSchema
 }

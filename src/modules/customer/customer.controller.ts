@@ -53,8 +53,28 @@ const getCutomerByID = catchAsync(async(req,res)=>{
     )
 })
 
+// Update Customer Data
+
+const updateCustomer = catchAsync(async(req,res)=>{
+
+    const {id} = req.params
+
+    const updatedCustomer = await CustomerService.updateCustomerInToDB(id,req.body)
+
+    sendResponse(res,
+        {
+            statusCode:httpStatus.OK,
+            success: true,
+            message: 'Customer updated successfully',
+            data: updatedCustomer,
+        }
+    )
+
+})
+
 export const CustomersController = {
     createCustomer,
     getAllCustomers,
-    getCutomerByID
+    getCutomerByID,
+    updateCustomer
 }
