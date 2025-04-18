@@ -11,6 +11,11 @@ router.post('/',
     CustomersController.createCustomer
 )
 
+// Get all Customer
+router.get('/', CustomersController.getAllCustomers);
+
+// Get a specific customer by ID
+router.get('/:id',CustomersController.getCutomerByID)
 
 
 

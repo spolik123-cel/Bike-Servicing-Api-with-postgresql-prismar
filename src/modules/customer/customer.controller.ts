@@ -20,6 +20,41 @@ const createCustomer = catchAsync(async(req,res)=>{
 })
 
 
+// Get All Customer
+const getAllCustomers = catchAsync(async(req,res)=>{
+
+    const customers = await CustomerService.getAllCustomersFromDB();
+
+    sendResponse(res,
+        {
+            statusCode:httpStatus.OK,
+            success: true,
+            message: 'Customers fetched successfully',
+            data:customers
+        }
+    )
+})
+
+// Get Customer By ID
+
+const getCutomerByID = catchAsync(async(req,res)=>{
+
+    const id = req.params.id as string
+
+    const customer = await CustomerService.getCustomerByIDFromDB(id);
+
+    sendResponse(res,
+        {
+            statusCode:httpStatus.OK,
+            success: true,
+            message: 'Customer fetched successfully',
+            data:customer
+        }
+    )
+})
+
 export const CustomersController = {
-    createCustomer
+    createCustomer,
+    getAllCustomers,
+    getCutomerByID
 }

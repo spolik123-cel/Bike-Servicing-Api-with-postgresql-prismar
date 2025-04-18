@@ -18,6 +18,36 @@ const createCustomerInToDB = async (payload:ICustomer) => {
 }
 
 
+const getAllCustomersFromDB = async() => {
+
+    const customers = await prisma.customer.findMany({
+
+      orderBy: {
+
+        createdAt: 'desc',
+
+      },
+
+    }
+  );
+
+    return customers;
+}
+
+const getCustomerByIDFromDB = async(id:string) => {
+
+  const customer = await prisma.customer.findUniqueOrThrow({
+    where:{
+      customerId:id
+    },
+  }
+);
+
+  return customer;
+}
+
 export const CustomerService = {
-    createCustomerInToDB
+    createCustomerInToDB,
+    getAllCustomersFromDB,
+    getCustomerByIDFromDB
 }
