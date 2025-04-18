@@ -139,7 +139,7 @@ Standardized error format across the app:
 ### Installation
 
 ```bash
-git clone https://github.com/yourusername/bike-servicing-api.git
+git clone https://github.com/Amdadul-HQ/Bike-Servicing-Api-with-postgresql-prismar.git
 cd bike-servicing-api
 npm install
 ```
@@ -203,7 +203,7 @@ Feel free to use, fork, and contribute!
 ## 👨‍💻 Author
 
 **Amdadul Haque Bhuiyan (Rimon)**  
-[GitHub](https://github.com/yourusername) • [Portfolio](https://your-portfolio.com)
+[GitHub](https://github.com/Amdadul-HQ) • [Portfolio](https://portfolio-phi-one-22.vercel.app/)
 
 ---
 
