@@ -16,7 +16,7 @@ To develop a backend system that allows a bike servicing center to:
 ---
 
 ## 🔗 Live API (if hosted)
-> `https://your-api-hosting-link.com`  
+> `https://bikeservicing.vercel.app/`  
 *Replace with your deployed URL (e.g., Railway, Render, etc.)*
 
 ---
