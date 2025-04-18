@@ -6,7 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
+  // output   = "../src/generated/prisma"
 }
 
 datasource db {
@@ -46,7 +46,7 @@ model ServiceRecord {
   serviceDate    DateTime
   completionDate DateTime? // Nullable
   description    String
-  status         ServiceStatus    // e.g., "pending", "in-progress", "done"
+  status         ServiceStatus 
 
   // Relations
   bike           Bike     @relation(fields: [bikeId], references: [bikeId], onDelete: Cascade)
