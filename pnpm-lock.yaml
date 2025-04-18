@@ -39,6 +39,9 @@ importers:
       '@types/cors':
         specifier: ^2.8.17
         version: 2.8.17
+      '@types/express':
+        specifier: ^5.0.1
+        version: 5.0.1
       '@types/node':
         specifier: ^22.14.1
         version: 22.14.1
