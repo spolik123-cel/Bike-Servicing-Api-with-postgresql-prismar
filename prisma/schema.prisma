@@ -43,19 +43,14 @@ model Bike {
 model ServiceRecord {
   serviceId      String   @id @default(uuid())
   bikeId         String
-  serviceDate    DateTime
+  serviceDate    DateTime     
   completionDate DateTime? // Nullable
   description    String
-  status         ServiceStatus 
+  status         String
 
   // Relations
   bike           Bike     @relation(fields: [bikeId], references: [bikeId], onDelete: Cascade)
 }
 
-enum ServiceStatus {
-  PENDING     @map("pending")
-  IN_PROGRESS @map("in-progress")
-  DONE        @map("done")
-}
 
 

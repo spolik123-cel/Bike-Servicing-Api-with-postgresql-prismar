@@ -10,7 +10,7 @@ const createCustomer = catchAsync(async(req,res)=>{
 
     sendResponse(res,
         {
-            statusCode:httpStatus.OK,
+            statusCode:httpStatus.CREATED,
             success:true,
             message:'Customer created successfully',
             data:result
