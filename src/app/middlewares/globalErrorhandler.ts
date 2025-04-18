@@ -1,59 +1,56 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { Request, Response } from 'express';
-import { ZodError } from 'zod';
-import config from '../config';
-import AppError from '../errors/AppError';
-import handleDuplicateError from '../errors/handleDuplicateError';
-import handleZodError from '../errors/handleZodError';
-import { TErrorSources } from '../interface/error';
+import { Request, Response, NextFunction } from 'express';
+import { Prisma } from '@prisma/client';
+import httpStatus from 'http-status';
 
-const globalErrorHandler = (err: any, req: Request, res: Response) => {
-  //setting default values
-  let statusCode = 500;
-  let message = 'Something went wrong!';
-  let errorSources: TErrorSources = [
-    {
-      path: '',
-      message: 'Something went wrong',
-    },
-  ];
+const globalErrorHandler = (
+  err: any,
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  let statusCode = httpStatus.INTERNAL_SERVER_ERROR;
+  let message = 'Something went wrong';
+  let errorDetails: any = {};
 
-  if (err instanceof ZodError) {
-    const simplifiedError = handleZodError(err);
-    statusCode = simplifiedError?.statusCode;
-    message = simplifiedError?.message;
-    errorSources = simplifiedError?.errorSources;
-  } else if (err?.code === 11000) {
-    const simplifiedError = handleDuplicateError(err);
-    statusCode = simplifiedError?.statusCode;
-    message = simplifiedError?.message;
-    errorSources = simplifiedError?.errorSources;
-  } else if (err instanceof AppError) {
-    statusCode = err?.statusCode;
-    message = err.message;
-    errorSources = [
-      {
-        path: '',
-        message: err?.message,
-      },
-    ];
-  } else if (err instanceof Error) {
-    message = err.message;
-    errorSources = [
-      {
-        path: '',
-        message: err?.message,
-      },
-    ];
+  // Handle Prisma errors
+  if (err instanceof Prisma.PrismaClientKnownRequestError) {
+    switch (err.code) {
+      case 'P2002':
+        // Unique constraint failed
+        statusCode = httpStatus.CONFLICT;
+        message = 'Duplicate value entered for unique field';
+        errorDetails = {
+          target: err.meta?.target,
+          message: `The value for '${err.meta?.target}' already exists.`,
+        };
+        break;
+
+      case 'P2025':
+        // Record not found
+        statusCode = httpStatus.NOT_FOUND;
+        message = 'Requested record not found';
+        errorDetails = err.meta;
+        break;
+
+      default:
+        message = err.message;
+        errorDetails = err.meta;
+    }
   }
 
-  //ultimate return
-  return res.status(statusCode).json({
+  // Prisma validation error
+  else if (err instanceof Prisma.PrismaClientValidationError) {
+    statusCode = httpStatus.BAD_REQUEST;
+    message = 'Validation failed for the data provided';
+    errorDetails = err.message;
+  }
+
+  // Catch all fallback
+  res.status(statusCode).json({
     success: false,
     message,
-    errorSources,
-    err,
-    stack: config.NODE_ENV === 'development' ? err?.stack : null,
+    error: errorDetails || err,
+    stack: process.env.NODE_ENV === 'development' ? err.stack : undefined,
   });
 };
 
