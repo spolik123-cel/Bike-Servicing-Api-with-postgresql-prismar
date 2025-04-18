@@ -1,11 +1,11 @@
 import prisma from "../../app/utils/prisma";
 import { IService } from "./serviceRecord.interface";
+import { subDays } from 'date-fns';
 
 const createServiceRecordInToDB = async(payload:IService) => {
 
     const { bikeId } = payload
 
-   
 
     const isBikeExist = await prisma.bike.findUniqueOrThrow({
         where:{
@@ -88,10 +88,40 @@ const updateServiceRecordByIDInToDB = async(serviceId:string) => {
     return result
 }
 
+const overDueServicesRecordFromDB = async() => {
+
+    const sevenDaysAgo = subDays(new Date(), 7);
+
+    const overDueServiceRecord = await prisma.serviceRecord.findMany({
+
+        where:{
+    
+          status:{
+            in:['pending','in-progress']
+          },
+          
+          serviceDate:{
+            lt: sevenDaysAgo,
+          }
+
+        },
+        orderBy:{
+
+            serviceDate:'asc'
+
+        }
+    
+      }
+    )
+
+    return overDueServiceRecord
+}
+
 export const ServiceRecordService = {
     createServiceRecordInToDB,
     getAllServicesFromDB,
     getServiceRecordByIDFromDB,
     completedServiceRecordByIDInToDB,
-    updateServiceRecordByIDInToDB
+    updateServiceRecordByIDInToDB,
+    overDueServicesRecordFromDB
 }

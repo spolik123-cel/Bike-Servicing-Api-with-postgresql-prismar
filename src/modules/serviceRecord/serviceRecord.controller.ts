@@ -83,11 +83,27 @@ const updateServiceRecord = catchAsync(async(req,res)=>{
 })
 
 
+const overDueServices = catchAsync(async(req,res)=>{
+
+    const result = await ServiceRecordService.overDueServicesRecordFromDB()
+
+    sendResponse(res,
+        {
+            statusCode:httpStatus.CREATED,
+            success:true,
+            message: "Overdue or pending services fetched successfully",
+            data:result
+        }
+    )
+
+})
+
 
 export const ServiceRecordController = {
     createServiceRecord,
     getAllServices,
     getServiceRecord,
     completedServiceRecord,
-    updateServiceRecord
+    updateServiceRecord,
+    overDueServices
 }
