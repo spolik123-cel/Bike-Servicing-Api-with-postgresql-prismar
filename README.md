@@ -2,7 +2,7 @@ Here's a **professional `README.md`** file for your Bike Servicing Management AP
 
 ---
 
-```
+```markdown
 # 🚴‍♂️ Bike Servicing Management API
 
 A backend API built with **Node.js**, **Express.js**, **TypeScript**, **Prisma ORM**, and **PostgreSQL** to streamline the process of managing customers, bikes, and service records for a bike servicing center. This API provides full CRUD operations with robust error handling, input validation, and overdue service tracking.
