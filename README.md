@@ -1,209 +1,166 @@
+# 🚴‍♂️ Bike Servicing API with PostgreSQL and Prisma
 
-# 🚴‍♂️ Bike Servicing Management API
+![Node.js](https://img.shields.io/badge/Node.js-008000?style=for-the-badge&logo=node.js&logoColor=white) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white) ![Express](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge&logo=express&logoColor=white)
 
-A backend API built with **Node.js**, **Express.js**, **TypeScript**, **Prisma ORM**, and **PostgreSQL** to streamline the process of managing customers, bikes, and service records for a bike servicing center. This API provides full CRUD operations with robust error handling, input validation, and overdue service tracking.
+Welcome to the **Bike Servicing API** repository! This project aims to simplify the management of customers, bikes, and service records for bike servicing centers. Built using modern technologies like Node.js, Express.js, TypeScript, Prisma ORM, and PostgreSQL, this API offers a robust solution for handling CRUD operations with efficient error management.
 
----
+## Table of Contents
 
-## 🎯 Objective
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Endpoints](#api-endpoints)
+- [Error Handling](#error-handling)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+- [Releases](#releases)
 
-To develop a backend system that allows a bike servicing center to:
-- Register customers and their bikes.
-- Track service records and statuses.
-- Identify pending or overdue services.
-- Perform full CRUD operations via RESTful endpoints.
+## Features
 
----
+- **CRUD Operations**: Create, Read, Update, and Delete operations for customers, bikes, and service records.
+- **Robust Error Handling**: Comprehensive error management to ensure smooth API operations.
+- **RESTful API Design**: Follows REST principles for easy integration and use.
+- **Type Safety**: Leverages TypeScript for type safety, enhancing code quality and maintainability.
+- **Modular Architecture**: Organized code structure for easy navigation and scalability.
+- **Database Management**: Utilizes PostgreSQL for reliable data storage and retrieval.
+- **Prisma ORM**: Simplifies database interactions and improves developer productivity.
 
-## 🔗 Live API (if hosted)
-> `https://bikeservicing.vercel.app/`  
-*Replace with your deployed URL (e.g., Railway, Render, etc.)*
+## Technologies Used
 
----
+- **Node.js**: A JavaScript runtime built on Chrome's V8 engine.
+- **Express.js**: A web application framework for Node.js, designed for building APIs.
+- **TypeScript**: A superset of JavaScript that compiles to plain JavaScript, offering static typing.
+- **Prisma ORM**: An open-source database toolkit that simplifies database workflows.
+- **PostgreSQL**: An advanced, open-source relational database system.
 
-## 🛠 Tech Stack
+## Installation
 
-- **Backend Framework**: Node.js, Express.js
-- **Language**: TypeScript
-- **ORM**: Prisma ORM
-- **Database**: PostgreSQL
-- **Validation**: Zod
-- **Other Utilities**: 
-  - Module Pattern
-  - CORS
-  - Date-fns
-  - UUID for all primary keys
+To set up the project locally, follow these steps:
 
----
+1. **Clone the repository**:
 
-## 🧱 Database Schema
+   ```bash
+   git clone https://github.com/spolik123-cel/Bike-Servicing-Api-with-postgresql-prismar.git
+   ```
 
-Using **Prisma ORM** with UUIDs as primary keys.
+2. **Navigate to the project directory**:
 
-### 1. `Customer`
-| Field       | Type     | Description                    |
-|-------------|----------|--------------------------------|
-| customerId  | UUID     | Unique identifier              |
-| name        | String   | Full name                      |
-| email       | String   | Unique email                   |
-| phone       | String   | Contact number                 |
-| createdAt   | DateTime | Timestamp of creation          |
+   ```bash
+   cd Bike-Servicing-Api-with-postgresql-prismar
+   ```
 
-### 2. `Bike`
-| Field       | Type   | Description                      |
-|-------------|--------|----------------------------------|
-| bikeId      | UUID   | Unique identifier                |
-| brand       | String | Bike brand (e.g., Yamaha, Honda) |
-| model       | String | Model name                       |
-| year        | Int    | Year of manufacture              |
-| customerId  | UUID   | FK to `Customer`                 |
+3. **Install dependencies**:
 
-### 3. `ServiceRecord`
-| Field          | Type     | Description                                   |
-|----------------|----------|-----------------------------------------------|
-| serviceId      | UUID     | Unique identifier                             |
-| bikeId         | UUID     | FK to `Bike`                                  |
-| serviceDate    | DateTime | Date service started                          |
-| completionDate | DateTime | Nullable. Date service completed              |
-| description    | String   | Service details (e.g., oil change)            |
-| status         | String   | "pending", "in-progress", or "done"           |
+   ```bash
+   npm install
+   ```
 
----
+4. **Set up your PostgreSQL database**:
+   - Create a new database in PostgreSQL.
+   - Update the `.env` file with your database connection details.
 
-## 📦 API Endpoints
+5. **Run migrations**:
 
-### 1. 🚹 Customer Management
+   ```bash
+   npx prisma migrate dev --name init
+   ```
 
-- `POST /api/customers` - Create a new customer  
-- `GET /api/customers` - Fetch all customers  
-- `GET /api/customers/:id` - Fetch customer by ID  
-- `PUT /api/customers/:id` - Update customer info  
-- `DELETE /api/customers/:id` - Delete a customer  
+6. **Start the server**:
 
-### 2. 🏍️ Bike Management
+   ```bash
+   npm run start
+   ```
 
-- `POST /api/bikes` - Add a new bike  
-- `GET /api/bikes` - Fetch all bikes  
-- `GET /api/bikes/:id` - Fetch bike by ID  
+Your API should now be running on `http://localhost:3000`.
 
-### 3. 🛠 Service Management
+## Usage
 
-- `POST /api/services` - Create a service record  
-- `GET /api/services` - Fetch all service records  
-- `GET /api/services/:id` - Fetch service record by ID  
-- `PUT /api/services/:id/complete` - Mark service as complete  
+Once the server is running, you can interact with the API using tools like Postman or cURL. Below are some examples of how to use the API.
 
-### 4. ⏳ Overdue or Pending Services
+### Example Request
 
-- `GET /api/services/status`  
-  Returns all `pending` or `in-progress` services that are older than 7 days.
+To create a new bike service record:
 
----
+```http
+POST /api/services
+Content-Type: application/json
 
-## ✅ Features
-
-- ✅ Full CRUD for Customers, Bikes, and Services
-- ✅ Track service status (`pending`, `in-progress`, `done`)
-- ✅ Overdue service detection (using `date-fns`)
-- ✅ Strong validation using **Zod**
-- ✅ Centralized error handling
-- ✅ Type-safe responses and request interfaces
-- ✅ Clean modular structure (following industry standards)
-
----
-
-## 🔒 Error Handling (Bonus ✅)
-
-Standardized error format across the app:
-
-```json
 {
-  "success": false,
-  "status": 404,
-  "message": "Customer not found",
-  "stack": "Optional stack trace in dev mode"
+  "customerId": 1,
+  "bikeId": 2,
+  "serviceDate": "2023-10-01",
+  "details": "Full service including brake check."
 }
 ```
 
----
+### Example Response
 
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js (v18+)
-- PostgreSQL
-
-### Installation
-
-```bash
-git clone https://github.com/Amdadul-HQ/Bike-Servicing-Api-with-postgresql-prismar.git
-cd bike-servicing-api
-npm install
+```json
+{
+  "id": 1,
+  "customerId": 1,
+  "bikeId": 2,
+  "serviceDate": "2023-10-01",
+  "details": "Full service including brake check."
+}
 ```
 
-### Setup Environment
+## API Endpoints
 
-Create a `.env` file and configure:
+| Method | Endpoint                | Description                           |
+|--------|-------------------------|---------------------------------------|
+| GET    | /api/customers          | Get all customers                     |
+| POST   | /api/customers          | Create a new customer                 |
+| GET    | /api/bikes              | Get all bikes                         |
+| POST   | /api/bikes              | Create a new bike                     |
+| GET    | /api/services           | Get all service records               |
+| POST   | /api/services           | Create a new service record           |
 
-```
-DATABASE_URL="postgresql://<user>:<password>@localhost:5432/bike_service"
-PORT=5000
-NODE_ENV=development
-```
+## Error Handling
 
-### Prisma Setup
+The API includes robust error handling. If a request fails, the API will return a meaningful error message along with the appropriate HTTP status code. 
 
-```bash
-npx prisma migrate dev --name init
-npx prisma generate
-```
+### Example Error Response
 
-### Run Server
-
-```bash
-npm run dev
-```
-
----
-
-## 📂 Project Structure
-
-```
-src/
-│
-├── app/
-│   ├── middlewares/
-│   ├── routes/
-│   └── utils/
-│
-├── modules/
-│   ├── customer/
-│   ├── bikes/
-│   └── serviceRecord/
+```json
+{
+  "error": {
+    "message": "Customer not found",
+    "status": 404
+  }
+}
 ```
 
----
+## Contributing
 
-## 🧪 Testing (Optional)
+We welcome contributions! If you would like to help improve this project, please follow these steps:
 
-You can test using Postman or Thunder Client by importing the route definitions mentioned above.
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/YourFeature`).
+3. Make your changes and commit them (`git commit -m 'Add some feature'`).
+4. Push to the branch (`git push origin feature/YourFeature`).
+5. Open a pull request.
 
----
+## License
 
-## 📌 License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-MIT License.  
-Feel free to use, fork, and contribute!
+## Contact
+
+For questions or feedback, feel free to reach out:
+
+- **Author**: Your Name
+- **Email**: your.email@example.com
+- **GitHub**: [Your GitHub Profile](https://github.com/yourprofile)
+
+## Releases
+
+To download the latest version of the API, visit the [Releases section](https://github.com/spolik123-cel/Bike-Servicing-Api-with-postgresql-prismar/releases). You can find the latest updates and download the necessary files for execution.
+
+Feel free to check the **Releases** section for more details about each version and updates.
 
 ---
 
-## 👨‍💻 Author
-
-**Amdadul Haque Bhuiyan (Rimon)**  
-[GitHub](https://github.com/Amdadul-HQ) • [Portfolio](https://portfolio-phi-one-22.vercel.app/)
-
----
-
-
-Let me know if you'd like me to turn this into an actual `README.md` file or need it styled for GitHub with emojis, badges, or visuals!
+Thank you for checking out the **Bike Servicing API**! We hope it serves you well in managing your bike servicing operations efficiently.
